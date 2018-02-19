@@ -9,12 +9,14 @@ import javax.persistence.*;
  * Entity implementation class for Entity: Facultad
  *
  */
-//@Entity
+@Entity
 
 public class Facultad implements Serializable {
 
 	   
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="facu_id")
 	private Integer id;
 	private String descripcion;
 	private String sigla;
