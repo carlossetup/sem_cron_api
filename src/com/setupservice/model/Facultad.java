@@ -11,7 +11,7 @@ import javax.persistence.*;
  */
 @Entity
 
-public class Facultad implements Serializable {
+public class Facultad implements Serializable, AbstractEntity {
 
 	   
 	@Id
