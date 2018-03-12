@@ -3,22 +3,19 @@ package com.setupservice.dao;
 
 import java.util.List;
 
-import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceException;
 
 import com.setupservice.model.AbstractEntity;
 
 
-
 public abstract class GenericDao {
 	public static EntityManagerFactory EMF = Persistence.createEntityManagerFactory("sem_cron");
 	
-//	@Resource
-	//private javax.transaction.UserTransaction ut;
+	//@Resource
+	private javax.transaction.UserTransaction ut;
 	
 	//@PersistenceContext
 	public EntityManager em;
