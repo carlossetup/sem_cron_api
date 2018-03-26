@@ -13,16 +13,16 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import com.setupservice.controller.FacultadController;
-import com.setupservice.model.Facultad;
+import com.setupservice.controller.CarreraController;
+import com.setupservice.model.Carrera;
 
-@Path("facultad")
-public class FacultadResource {
-	
+@Path("carrera")
+public class CarreraResource {
+
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response listarTodos(){
-	List<Facultad>f =new FacultadController().listarTodos();
+	List<Carrera>f =new CarreraController().listarTodos();
 	
 		if (f!=null) {
 			return Response.status(Response.Status.OK.getStatusCode()).entity(f).build();
@@ -35,7 +35,7 @@ public class FacultadResource {
 	@Path("/{id}")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response eliminar(@PathParam("id") int id) {
-		if(new FacultadController().eliminar(id)){
+		if(new CarreraController().eliminar(id)){
 		   return Response.status(Response.Status.OK.getStatusCode()).build();
 		}else{
 			return Response.status(Response.Status.NOT_FOUND.getStatusCode()).build();
@@ -47,7 +47,7 @@ public class FacultadResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response obtener(@PathParam("id") int id) {
-		Facultad f = new FacultadController().obtener(id);
+		Carrera f = new CarreraController().obtener(id);
 		if (f!=null) {
 			return Response.status(Response.Status.OK.getStatusCode()).entity(f).build();
 		}else{
@@ -58,35 +58,40 @@ public class FacultadResource {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response guardar(Facultad facultad) {
-		facultad=new FacultadController().guardar(facultad);
-		if (facultad!=null) {
-			return Response.status(Response.Status.CREATED.getStatusCode()).entity(facultad).build();
+	public Response guardar(Carrera a) {
+		a=new CarreraController().guardar(a);
+		if (a!=null) {
+			return Response.status(Response.Status.CREATED.getStatusCode()).entity(a).build();
 		}else{
-		return Response.status(Response.Status.INTERNAL_SERVER_ERROR.getStatusCode()).entity(facultad).build();
+		return Response.status(Response.Status.INTERNAL_SERVER_ERROR.getStatusCode()).entity(a).build();
 		}	
 	}
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response actualizar(Facultad facultad) {
-		facultad = new FacultadController().actualizar(facultad);
-		if(facultad!=null){
-			   return Response.status(Response.Status.OK.getStatusCode()).entity(facultad).build();
+	public Response actualizar(Carrera a) {
+		a = new CarreraController().actualizar(a);
+		if(a!=null){
+			   return Response.status(Response.Status.OK.getStatusCode()).entity(a).build();
 			}else{
 				return Response.status(Response.Status.INTERNAL_SERVER_ERROR.getStatusCode()).build();
 			}
 	}
+	
+	/*
 	@GET
-	@Path("/facultad_por_filial/{id}")
+	@Path("/facultad_por_uni/{id}")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response obtenerFacPorFilial(@PathParam("id") int filId) {
-		List<Facultad>f =new FacultadController().obtenerFacuPorFilial(filId);
+		List<Alumno>f =new AlumnoController().obtenerFacuPorFilial(filId);
 		if (f!=null) {
 			return Response.status(Response.Status.OK.getStatusCode()).entity(f).build();
 		}else{
 			return Response.status(Response.Status.NO_CONTENT.getStatusCode()).entity(f).build();
 		}
 	}
+	
+	*/
+	
 }

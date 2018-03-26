@@ -6,6 +6,10 @@
 		<non-jta-data-source>java:jboss/datasources/sem_cronDS</non-jta-data-source>
 		<class>com.setupservice.model.Universidad</class>
 		<class>com.setupservice.model.Facultad</class>
+		<class>com.setupservice.model.Alumno</class>
+		<class>com.setupservice.model.AlumnoPresentacion</class>
+		<class>com.setupservice.model.Carrera</class>
+		<class>com.setupservice.model.Presentacion</class>
 		
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />

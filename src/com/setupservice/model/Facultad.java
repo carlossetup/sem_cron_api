@@ -6,6 +6,7 @@ import java.lang.Integer;
 import java.lang.String;
 import javax.persistence.*;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
@@ -17,19 +18,22 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 public class Facultad implements Serializable, AbstractEntity {
 
-	   
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="facu_id")
 	private Integer id;
+	@Column(length=80,nullable=false)
 	private String descripcion;
+	@Column(length=15,nullable=true)
 	private String sigla;
-	private static final long serialVersionUID = 1L;
 	
-	@ManyToOne
+	
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(foreignKey = @ForeignKey(name = "fk_universidad"),name="uni_id",nullable=false)
 	@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property = "id")
-	@JsonIgnoreProperties({"universidad"})
+	//@JsonIgnore
 	private Universidad universidad;
 	
 	
